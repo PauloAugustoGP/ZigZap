@@ -1,14 +1,18 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2008
 
-
+Project("{B8A8F3F1-281B-BFBD-81FE-C36157E7FB8D}") = "ZigZap", "Assembly-CSharp.csproj", "{B8FC7424-DCF8-FE15-C0DB-30FD8642BC07}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-
+		{B8FC7424-DCF8-FE15-C0DB-30FD8642BC07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8FC7424-DCF8-FE15-C0DB-30FD8642BC07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8FC7424-DCF8-FE15-C0DB-30FD8642BC07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8FC7424-DCF8-FE15-C0DB-30FD8642BC07}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
