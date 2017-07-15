@@ -12,7 +12,6 @@ public class Level : MonoBehaviour
 
     Vector3 checkpointPosition;
     int checkpoint;
-    [SerializeField]ParticleSystem checkpointEffect;
     
 
     void Start()
@@ -21,7 +20,6 @@ public class Level : MonoBehaviour
         checkpoint = 0;
 
         checkpointPosition = new Vector3(0, 0, 0);
-        Instantiate(checkpointEffect, checkpointPosition, Quaternion.Euler(-90, 0, 0));
 
         current = new Vector3(0f, 0f, 0f);
         Instantiate(floor, transform).transform.position = current;
@@ -68,4 +66,6 @@ public class Level : MonoBehaviour
             checkpoint = 0;
         }
     }
+
+    public Vector3 GetCheckpoint() { return checkpointPosition; }
 }
