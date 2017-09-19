@@ -41,7 +41,11 @@ public class Currency : MonoBehaviour
             else
                 c.GetComponent<Player>().AddGem();
 
-            Destroy(gameObject);
+            GetComponent<AudioSource>().Play();
+
+            transform.position = new Vector3(0, -0.5f, 0);
+
+            Destroy(gameObject, 0.5f);
         }
     }
 }

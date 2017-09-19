@@ -23,13 +23,13 @@ public class Platform : MonoBehaviour
             
             if(currency < 2)
             {
-                Instantiate(gem, transform).transform.position = line2[1].position;
+                Instantiate(gem, line2[1].position, Quaternion.Euler(90, 0, 0)).transform.parent = transform;
             }
             else
             {
-                Instantiate(coin, transform).transform.position = line1[Random.Range(0, line1.Count)].position;
-                Instantiate(coin, transform).transform.position = line2[Random.Range(0, line2.Count)].position;
-                Instantiate(coin, transform).transform.position = line3[Random.Range(0, line3.Count)].position;
+                Instantiate(coin, line1[Random.Range(0, line1.Count)].position, Quaternion.identity).transform.parent = transform;
+                Instantiate(coin, line1[Random.Range(0, line1.Count)].position, Quaternion.identity).transform.parent = transform;
+                Instantiate(coin, line1[Random.Range(0, line1.Count)].position, Quaternion.identity).transform.parent = transform;
             }
         }
     }
@@ -41,7 +41,7 @@ public class Platform : MonoBehaviour
 
     void OnTriggerEnter(Collider c)
     {
-        if (c.gameObject.tag == "Player")
+        if (c.gameObject.tag == "Player" && !done)
         {
             c.GetComponent<Player>().AddDistance();
             GetComponentInParent<Level>().DecreaseQuant();

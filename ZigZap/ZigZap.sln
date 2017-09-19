@@ -1,7 +1,9 @@
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2008
-
-Project("{B8A8F3F1-281B-BFBD-81FE-C36157E7FB8D}") = "ZigZap", "Assembly-CSharp.csproj", "{B8FC7424-DCF8-FE15-C0DB-30FD8642BC07}"
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2017
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZigZap", "ZigZap.csproj", "{41EB2BDE-8935-1F2E-1A5E-A1E2379EC3AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZigZap.Editor", "ZigZap.Editor.csproj", "{38309965-7ACF-55D4-14B2-47BCC0BD7717}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,15 +11,16 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B8FC7424-DCF8-FE15-C0DB-30FD8642BC07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B8FC7424-DCF8-FE15-C0DB-30FD8642BC07}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B8FC7424-DCF8-FE15-C0DB-30FD8642BC07}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B8FC7424-DCF8-FE15-C0DB-30FD8642BC07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41EB2BDE-8935-1F2E-1A5E-A1E2379EC3AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41EB2BDE-8935-1F2E-1A5E-A1E2379EC3AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41EB2BDE-8935-1F2E-1A5E-A1E2379EC3AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41EB2BDE-8935-1F2E-1A5E-A1E2379EC3AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38309965-7ACF-55D4-14B2-47BCC0BD7717}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38309965-7ACF-55D4-14B2-47BCC0BD7717}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38309965-7ACF-55D4-14B2-47BCC0BD7717}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38309965-7ACF-55D4-14B2-47BCC0BD7717}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = Assembly-CSharp.csproj
 	EndGlobalSection
 EndGlobal

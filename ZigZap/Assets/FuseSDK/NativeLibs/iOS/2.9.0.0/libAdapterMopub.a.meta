@@ -1,0 +1,26 @@
+fileFormatVersion: 2
+guid: 80f852ef7b628460db6b532360728431
+timeCreated: 1501339827
+licenseType: Free
+PluginImporter:
+  serializedVersion: 1
+  iconMap: {}
+  executionOrder: {}
+  isPreloaded: 0
+  isOverridable: 0
+  platformData:
+    Editor:
+      enabled: 0
+      settings:
+        DefaultValueInitialized: true
+    data:
+      enabled: 0
+      settings: {}
+    iOS:
+      enabled: 1
+      settings:
+        CompileFlags: ' -ObjC'
+        FrameworkDependencies: CoreTelephony;AdSupport;StoreKit;MessageUI;EventKit;EventKitUI;Twitter;Social;Security;MobileCoreServices;WebKit;GameKit;UIKit;GLKit;JavaScriptCore;UserNotifications;
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

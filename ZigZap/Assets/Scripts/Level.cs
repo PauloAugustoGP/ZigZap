@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class Level : MonoBehaviour
 {
-    [SerializeField]GameObject floor;
+    [SerializeField] GameObject floor;
+    [SerializeField] GameObject floorInitial;
 
     Vector3 current;
 
     int quant;
 
     Vector3 checkpointPosition;
+    int checkpointOrientation;
     int checkpoint;
     
 
@@ -22,7 +24,7 @@ public class Level : MonoBehaviour
         checkpointPosition = new Vector3(0, 0, 0);
 
         current = new Vector3(0f, 0f, 0f);
-        Instantiate(floor, transform).transform.position = current;
+        Instantiate(floorInitial, transform).transform.position = current;
         quant++;
 
         current = new Vector3(current.x, 0f, current.z + 3f);
@@ -63,9 +65,11 @@ public class Level : MonoBehaviour
         if (checkpoint == 10)
         {
             checkpointPosition = newPosition;
+            checkpointOrientation = GameObject.FindWithTag("Player").GetComponent<Player>().GetOrientation();
             checkpoint = 0;
         }
     }
 
-    public Vector3 GetCheckpoint() { return checkpointPosition; }
+    public Vector3 GetCheckpointPosition() { return checkpointPosition; }
+    public int GetCheckpointOrientation() { return checkpointOrientation; }
 }

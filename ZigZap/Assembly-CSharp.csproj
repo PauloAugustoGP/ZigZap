@@ -46,13 +46,30 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Camera.cs" />
+     <Compile Include="Assets\FuseSDK\Android\FuseSDK_Android.cs" />
+     <Compile Include="Assets\FuseSDK\Android\FuseSDK_Prime31_IAB.cs" />
+     <Compile Include="Assets\FuseSDK\Android\FuseSDK_Unibill_Android.cs" />
+     <Compile Include="Assets\FuseSDK\Common\FuseMisc.cs" />
+     <Compile Include="Assets\FuseSDK\Common\FuseSDK.cs" />
+     <Compile Include="Assets\FuseSDK\Common\FuseSDKEditorSession.cs" />
+     <Compile Include="Assets\FuseSDK\Common\FuseSDK_SoomlaIAP.cs" />
+     <Compile Include="Assets\FuseSDK\Common\JSONObject.cs" />
+     <Compile Include="Assets\FuseSDK\iOS\FuseSDK_Prime31StoreKit.cs" />
+     <Compile Include="Assets\FuseSDK\iOS\FuseSDK_Unibill_iOS.cs" />
+     <Compile Include="Assets\FuseSDK\iOS\FuseSDK_iOS.cs" />
+     <Compile Include="Assets\Scripts\AccelerometerInput.cs" />
+     <Compile Include="Assets\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\Currency.cs" />
      <Compile Include="Assets\Scripts\Level.cs" />
      <Compile Include="Assets\Scripts\Manager.cs" />
      <Compile Include="Assets\Scripts\Platform.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\UI.cs" />
+     <None Include="Assets\PlayServicesResolver\proguard-messaging-workaround.txt" />
+     <None Include="Assets\PlayServicesResolver\Editor\play-services-resolver.txt" />
+     <None Include="Assets\PlayServicesResolver\proguard-unity.txt" />
+     <None Include="Assets\Plugins\Android\FuseUnityBridge\R.txt" />
+     <None Include="Assets\Plugins\Android\FuseUnityBridge\AndroidManifest.xml" />
  <Reference Include="UnityEngine.Advertisements">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>
  </Reference>

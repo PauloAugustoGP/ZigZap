@@ -14,16 +14,17 @@ public class Player : MonoBehaviour
     int orientation;
 
     float angle;
-
     float timeIncrease;
 
-    Vector2 touchStart;
-    float minDistanceY;
-
-    bool jumping;
+    //bool jumping;
     public bool dead;
+    bool running;
+
+    public int extraLife;
 
     Rigidbody rb;
+    Vector3 forward;
+    Vector3 left;
     
 	void Start ()
     {
@@ -31,26 +32,35 @@ public class Player : MonoBehaviour
         coins = 0;
         gems = 0;
 
-        maxSpeed = 0.02f;
+        maxSpeed = 0.0f;
         speed = 0f;
-        aceleration = 0.01f;
+        aceleration = 1;
         orientation = 0;
+        running = false;
+
+        extraLife = 1;
 
         angle = 0;
 
         timeIncrease = 0;
 
-        minDistanceY = 10f;
-
         rb = GetComponent<Rigidbody>();
+
+        forward = transform.forward.normalized;
+        left = transform.right.normalized * -1.0f;
     }
 	
 	void Update ()
     {
-        if (transform.position.y < 0.5f)
+        if (transform.position.y < -0.5f && !dead)
+        {
             dead = true;
 
-        if (!dead)
+            int total = PlayerPrefs.GetInt("TotalCoins");
+            PlayerPrefs.SetInt("TotalCoins", total + coins);
+        }
+
+        if (!dead && running)
         {
             speed += aceleration * Time.deltaTime;
             if (speed > maxSpeed) speed = maxSpeed;
@@ -58,62 +68,51 @@ public class Player : MonoBehaviour
             timeIncrease += Time.deltaTime;
             if (timeIncrease >= 5f)
             {
-                maxSpeed += 0.02f;
+                maxSpeed += 1;
                 timeIncrease = 0;
             }
 
             if (Input.touchCount > 0)
-                checkTouch();
+                CheckTouch();
 
-            angle += speed * 100;
+            angle += speed;
 
             if (orientation == 0)
             {
                 transform.rotation = Quaternion.Euler(angle, 0, 0);
-                transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + speed);
+                rb.velocity = forward * speed;
             }
             else
             {
-                transform.rotation = Quaternion.Euler(angle, -90, 0);
-                transform.position = new Vector3(transform.position.x - speed, transform.position.y, transform.position.z);
+                transform.rotation = Quaternion.Euler(0, 0, angle);
+                rb.velocity = left * speed;
             }
+
+            rb.AddForce(Vector3.down*100);
         }
     }
 
-    void checkTouch()
+    void CheckTouch()
     {
         Touch touch = Input.GetTouch(0);
 
         switch(touch.phase)
         {
-            case TouchPhase.Began:
-                {
-                    touchStart = touch.position;
-                }break;
-
             case TouchPhase.Ended:
                 {
-                    float value = (new Vector3(0, touch.position.y, 0) - new Vector3(0, touchStart.y, 0)).magnitude;
-
-                    if (value > minDistanceY)
-                    {
-                        if (Mathf.Sign(touch.position.y - touchStart.y) > 0f)
-                            Jump();
-                    }
-                    else
-                        Orientation();
+                    Orientation();
                 }break;
         }
     }
 
-    void Jump()
+    /*void Jump()
     {
         if (!jumping)
         {
             rb.AddForce(new Vector3(0, 250, 0));
             jumping = true;
         }
-    }
+    }*/
 
     void Orientation()
     {
@@ -131,24 +130,59 @@ public class Player : MonoBehaviour
         coins++;
     }
 
+    public void DoubleCoin()
+    {
+        coins *= 2;
+    }
+
     public void AddGem()
     {
         gems++;
     }
+    
 
+    public void ResetPlayer(Vector3 newPosition, int newOrientation)
+    {
+        transform.position = new Vector3(newPosition.x, newPosition.y + 0.75f, newPosition.z);
+        
+        transform.rotation = Quaternion.identity;
+
+        orientation = newOrientation;
+
+        rb.velocity = Vector3.zero;
+
+        dead = false;
+        running = false;
+        speed = 0f;
+
+        Invoke("ResumeRun", 2.0f);
+    }
+
+    public int GetOrientation() { return orientation; }
     public int GetDistance() { return distance; }
     public int GetCoins() { return coins; }
     public int GetGems() { return gems; }
+    public bool IsRunning() { return running; }
 
-    void OnCollisionEnter(Collision c)
+    public void StartRun()
+    {
+        maxSpeed = 4;
+        running = true;
+    }
+
+    public void StopRun()
+    {
+        running = false;
+    }
+
+    public void ResumeRun()
+    {
+        running = true;
+    }
+
+    /*void OnCollisionEnter(Collision c)
     {
         if (c.gameObject.name == "Platform")
             jumping = false;
-    }
-
-    void OnCollisionStay(Collision c)
-    {
-        if (c.gameObject.name == "Platform")
-            jumping = false;
-    }
+    }*/
 }

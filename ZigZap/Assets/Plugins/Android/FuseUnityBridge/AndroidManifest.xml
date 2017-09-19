@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.upsight.mediation.unity"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="25" />
+
+    <!-- Permissions for Analytics -->
+    <uses-permission android:name="com.android.vending.BILLING" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- Optional but HIGHLY recommended -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+	<meta-data android:name="com.upsight.mediation.replace.gcmPermissions" android:value="1501339828" />
+	<!-- Permissions for GCM -->
+	<!-- Keeps the processor from sleeping when a message is received. -->
+	<uses-permission android:name="android.permission.WAKE_LOCK" />
+	
+	<!-- Creates a custom permission so only this app can receive its messages. -->
+	<meta-data android:name="com.upsight.mediation.replace.packageId" android:value="com.TriHak.ZigZap" />
+	<permission android:name="com.TriHak.ZigZap.permission.C2D_MESSAGE" android:protectionLevel="signature" />
+
+	<meta-data android:name="com.upsight.mediation.replace.packageId" android:value="com.TriHak.ZigZap" />
+	<uses-permission android:name="com.TriHak.ZigZap.permission.C2D_MESSAGE" />
+	
+	<!-- This app has permission to register and receive data message. -->
+	<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+
+    <application>
+		<meta-data android:name="com.upsight.mediation.replace.gcmReceiver" android:value="1501339828" />
+		<!-- GCM -->
+		<activity
+            android:name="com.upsight.mediation.unity.GCMJava"
+            android:label="@string/app_name" >
+		</activity>
+		<receiver
+            android:name="com.upsight.mediation.unity.FuseUnityGCMReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <!-- Receives the actual messages. -->
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <!-- Receives the registration id. -->
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+				
+				<meta-data android:name="com.upsight.mediation.replace.packageId" android:value="com.TriHak.ZigZap" />
+                <category android:name="com.TriHak.ZigZap" />
+
+            </intent-filter>
+		</receiver>
+		<service android:name="com.upsight.mediation.unity.GCMIntentService" />
+		<!-- end -->
+    </application>
+
+</manifest>
